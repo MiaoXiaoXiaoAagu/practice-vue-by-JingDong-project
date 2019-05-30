@@ -1,7 +1,29 @@
 <template>
-  <div>
-    <router-link to="/home">首页</router-link>
-    <router-link to="/category">分类</router-link>
+  <div class="footer">
+    <footer class="fixBottomBox">
+      <ul>
+        <router-link to="/home" class="tabItem">
+          <i class="iconfont iconshouye1"></i>
+          <label>首页</label>
+        </router-link>
+        <router-link to="/category" class="tabItem">
+          <i class="iconfont iconfenlei"></i>
+          <label>分类</label>
+        </router-link>
+        <router-link to="/find" class="tabItem">
+          <i class="iconfont iconfaxian"></i>
+          <label>发现</label>
+        </router-link>
+        <router-link to="/cart" class="tabItem">
+          <i class="iconfont icongouwuchekong"></i>
+          <label>购物车</label>
+        </router-link>
+        <router-link to="/mine" class="tabItem">
+          <i class="iconfont iconwode1"></i>
+          <label>我的</label>
+        </router-link>
+      </ul>
+    </footer>
   </div>
 </template>
 
@@ -11,10 +33,12 @@ export default {
     return {
      id:1000
     }
-  },
-
+  }
 }
 
 </script>
 <style scoped>
+  [class^='icon']{
+    background: none;
+  }
 </style>
