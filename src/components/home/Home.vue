@@ -13,9 +13,9 @@
 
 <script>
   import Banner from "./Banner";
-  import List from "./Banner";
-  import Nav from "./Banner";
-  import Search from "./Banner";
+  import List from "./List";
+  import Nav from "./Nav";
+  import Search from "./Search";
     export default {
         name: "Home",
         data:function () {
@@ -32,6 +32,8 @@
     }
 </script>
 
-<style scoped>
-
+<style>
+  /* 表示导入外部样式  @import
+  @import url(''); */
+  @import '../../assets/css/index.css'
 </style>
