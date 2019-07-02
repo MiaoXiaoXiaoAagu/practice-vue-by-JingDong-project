@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <router-view></router-view>
-    <NavBottom />
+    <NavBottom v-if="!$route.path.includes('detail')"/>
   </div>
 </template>
 

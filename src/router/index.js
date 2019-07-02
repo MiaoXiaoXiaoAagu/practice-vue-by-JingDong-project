@@ -8,8 +8,8 @@ import Find from "./../components/find/Find"
 import Detail from '../components/detail/Detail'
 
 Vue.use(Router);
-axios.defaults.baseURL="http://127.0.0.1:3333/";
-axios.defaults.headers['Content-Type']= 'application/x-www-form-urlencoded';
+axios.defaults.baseURL="http://127.0.0.1:8088/";
+axios.defaults.headers['Content-Type']= 'application/json;charset=utf-8';
 Vue.prototype.$http=axios;
 
 
@@ -29,6 +29,10 @@ export  default new Router({
   {
       path:"/category",
       component:Category
+  },
+  {
+      path: '/catgory/:id',
+      component: Category
   },
   {
       path:"/mine",

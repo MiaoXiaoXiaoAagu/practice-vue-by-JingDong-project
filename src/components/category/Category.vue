@@ -1,20 +1,27 @@
 <template>
-    <div>
-      <h1>{{welcome}}</h1>
-    </div>
+  <div>
+    <CatgoryHead />
+    <CatgoryMain/>
+  </div>
 </template>
 
 <script>
-    export default {
-        name: "Category",
-        data:function () {
-          return{
-            welcome:"Welcome to Category"
-          };
-        }
+  import CatgoryHead from './CatgoryHead'
+  import CatgoryMain from './CatgoryMain'
+  export default {
+    data () {
+      return {
+        name:'catgory'
+      }
+    },
+    components:{
+      CatgoryHead,
+      CatgoryMain
     }
+
+  }
+
 </script>
-
-<style scoped>
-
+<style >
+  @import '../../assets/css/category.css';
 </style>

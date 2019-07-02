@@ -1,0 +1,45 @@
+<template>
+	<div id="cate_left">
+		 <div class="category_left">
+	            <ul class="childbox">
+	                <li :class="{active:cur==i}" v-for="(item,i) in leftDatas"
+                  @click="cur=i"  :key="i" >
+	                	<router-link :to="'/catgory/'+item.category_id">
+	                	{{item.category_name}}
+	                	</router-link>
+	                </li>
+
+	            </ul>
+	        </div>
+	</div>
+</template>
+<script>
+export default{
+	data() {
+		return{
+			leftDatas:[],
+			cur:0,
+		}
+	},
+	//生命周期
+	mounted() {
+		this.getLeftDatas();
+	},
+	methods:{
+		getLeftDatas() {
+			this.$http.get('/category/list').then((res)=>{
+				this.leftDatas = res.data;
+			},(err)=>{
+				console.log(err);
+			})
+		},
+
+	}
+}
+</script>
+<style scoped>
+.active {
+    background: #999;
+	color:blue;
+}
+</style>
