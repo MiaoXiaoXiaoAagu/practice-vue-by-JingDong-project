@@ -78,35 +78,42 @@
       }
     },
     //通过ID去请求展示
+    created:function(){
+      this.navBottomToggle();
+    },
     mounted:function(){
       this.getDetail(this.$route.params.id);
     },
+    destroyed:function(){
+      this.navBottomToggle();
+    },
     methods:{
-      getDetail:function(id){
-        this.$http.post('/detail/data',{producId:parseInt(id)}).then(res=>{   //http://127.0.0.1:8088/detail?mId=6
-          //alert(JSON.stringify(res));
-          console.log(res.data);
-          //this.images = [res.data.product_img_url];
-          this.detailData = res.data;
-        },(error)=>{
-          console.log(error)
-        })
-        this.$http.post('/detail/imgs',{producId:parseInt(id)}).then(res=>{   //http://127.0.0.1:8088/detail?mId=6
-          this.images = res.data;
-        },(error)=>{
-          console.log(error)
-        })
-      },
       // getDetail:function(id){
-      //   this.$http.get('/detail',{params:{mId:id}}).then(res=>{   //http://127.0.0.1:3333/detail?mId=6
-      //     //alert(JSON.stringify(res));
-      //     this.flag = true;  // 由于数据异步加载，通过v-if 来判断获取数据后再渲染
-      //     this.goodsImages = res.data[0];
-      //     this.goodsData = res.data[1];
+      //   this.$http.post('/detail/data',{producId:parseInt(id)}).then(res=>{   //http://127.0.0.1:8088/detail?mId=6
+      //     //console.log(res.data);
+      //     this.detailData = res.data;
+      //   },(error)=>{
+      //     console.log(error)
+      //   })
+      //   this.$http.post('/detail/imgs',{producId:parseInt(id)}).then(res=>{   //http://127.0.0.1:8088/detail?mId=6
+      //     this.images = res.data;
       //   },(error)=>{
       //     console.log(error)
       //   })
       // },
+      getDetail:function(id){
+        this.$http.get('/detail',{params:{mId:id}}).then(res=>{   //http://127.0.0.1:3333/detail?mId=6
+          //alert(JSON.stringify(res));
+          this.flag = true;  // 由于数据异步加载，通过v-if 来判断获取数据后再渲染
+          this.images = res.data[0];
+          this.detailData = res.data[1][0];
+        },(error)=>{
+          console.log(error)
+        })
+      },
+      navBottomToggle(){
+        this.$store.dispatch("navBottomToggle");
+      },
       goBack:function(){
         //this.$router.push('/home');
          window.history.go(-1);

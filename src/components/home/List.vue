@@ -67,12 +67,22 @@
       }
     },
     methods: {
-      getList: function () {
-        this.$http.get('/home').then(res => {
-          // if(res.code =='200'){}
-          this.lists = res.data.slice(0, 4)
-          this.mainDatas = res.data
-        }, (error) => {
+      // getList: function () {
+      //   this.$http.get('/home').then(res => {
+      //     // if(res.code =='200'){}
+      //     this.lists = res.data.slice(0, 4)
+      //     this.mainDatas = res.data
+      //   }, (error) => {
+      //     console.log(error)
+      //   })
+      // }
+
+      getList:function(){
+        this.$http.get('/home').then(res=>{
+          //if(res.code =='200'){}
+          this.lists = res.data.slice(0,4);
+          this.mainDatas = res.data;
+        },(error)=>{
           console.log(error)
         })
       }
