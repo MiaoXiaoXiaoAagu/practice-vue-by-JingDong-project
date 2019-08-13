@@ -1,20 +1,34 @@
 <template>
-  <div>
-    <h1>{{welcome}}</h1>
+  <div id="my_cart">
+    <CartHeaderView></CartHeaderView>
+    <CartMainView></CartMainView>
+    <CartFooterView></CartFooterView>
   </div>
 </template>
-
 <script>
-  export default {
-    name: "Cart",
-    data:function () {
-      return{
-        welcome:"Welcome to Cart"
-      };
+    import CartHeaderView from './CartHeader.vue';
+    import CartMainView from './CartMain.vue';
+    import CartFooterView from './CartFooter.vue';
+
+    export default{
+        methods:{
+            navBottomToggle () {
+                this.$store.dispatch('navBottomToggle')
+            }
+        },
+        created: function () {
+            this.navBottomToggle()
+        },
+        destroyed: function () {
+            this.navBottomToggle()
+        },
+        components:{
+            CartHeaderView,
+            CartMainView,
+            CartFooterView
+        }
     }
-  }
 </script>
-
-<style scoped>
-
+<style>
+  @import '../../assets/css/cart.css';
 </style>

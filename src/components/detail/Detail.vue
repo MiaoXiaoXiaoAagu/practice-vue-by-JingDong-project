@@ -59,7 +59,7 @@
           </li>
         </ul>
         <div class="btn_box clearfix" >
-          <a href="#" class="buy_now">加入购物车</a>
+          <a href="#" class="buy_now" @click.prevent="addToCart()">加入购物车</a>
           <a href="#" class="buybuy">立即购买</a>
         </div>
       </div>
@@ -68,59 +68,67 @@
 </template>
 
 <script>
-  export default {
-    data () {
-      return {
-        name:'detail',
-        n:0,
-        images:[],
-        detailData:[]
-      }
-    },
-    //通过ID去请求展示
-    created:function(){
-      this.navBottomToggle();
-    },
-    mounted:function(){
-      this.getDetail(this.$route.params.id);
-    },
-    destroyed:function(){
-      this.navBottomToggle();
-    },
-    methods:{
-      // getDetail:function(id){
-      //   this.$http.post('/detail/data',{producId:parseInt(id)}).then(res=>{   //http://127.0.0.1:8088/detail?mId=6
-      //     //console.log(res.data);
-      //     this.detailData = res.data;
-      //   },(error)=>{
-      //     console.log(error)
-      //   })
-      //   this.$http.post('/detail/imgs',{producId:parseInt(id)}).then(res=>{   //http://127.0.0.1:8088/detail?mId=6
-      //     this.images = res.data;
-      //   },(error)=>{
-      //     console.log(error)
-      //   })
-      // },
-      getDetail:function(id){
-        this.$http.get('/detail',{params:{mId:id}}).then(res=>{   //http://127.0.0.1:3333/detail?mId=6
-          //alert(JSON.stringify(res));
-          this.flag = true;  // 由于数据异步加载，通过v-if 来判断获取数据后再渲染
-          this.images = res.data[0];
-          this.detailData = res.data[1][0];
-        },(error)=>{
-          console.log(error)
-        })
-      },
-      navBottomToggle(){
-        this.$store.dispatch("navBottomToggle");
-      },
-      goBack:function(){
-        //this.$router.push('/home');
-         window.history.go(-1);
-      }
+  import {mapActions} from 'vuex'
+export default {
+  data () {
+    return {
+      name: 'detail',
+      n: 0,
+      images: [],
+      detailData: []
     }
-
+  },
+  // 通过ID去请求展示
+  created: function () {
+    this.navBottomToggle()
+  },
+  mounted: function () {
+    this.getDetail(this.$route.params.id)
+  },
+  destroyed: function () {
+    this.navBottomToggle()
+  },
+  methods: {
+      ...mapActions(['navBottomToggle']),
+    // getDetail:function(id){
+    //   this.$http.post('/detail/data',{producId:parseInt(id)}).then(res=>{   //http://127.0.0.1:8088/detail?mId=6
+    //     //console.log(res.data);
+    //     this.detailData = res.data;
+    //   },(error)=>{
+    //     console.log(error)
+    //   })
+    //   this.$http.post('/detail/imgs',{producId:parseInt(id)}).then(res=>{   //http://127.0.0.1:8088/detail?mId=6
+    //     this.images = res.data;
+    //   },(error)=>{
+    //     console.log(error)
+    //   })
+    // },
+    getDetail: function (id) {
+      this.$http.get('/detail', {params: {mId: id}}).then(res => { // http://127.0.0.1:3333/detail?mId=6
+        this.flag = true // 由于数据异步加载，通过v-if 来判断获取数据后再渲染
+        this.images = res.data[0]
+        this.detailData = res.data[1][0]
+          //console.log(this.detailData);
+      }, (error) => {
+        console.log(error)
+      })
+    },
+    addToCart(){
+        let addData=JSON.parse(JSON.stringify(this.detailData));
+        //console.log(addData);
+        this.$store.dispatch('addGoods',addData);
+        this.$router.push("/cart");
+    },
+    navBottomToggle () {
+      this.$store.dispatch('navBottomToggle')
+    },
+    goBack: function () {
+      // this.$router.push('/home');
+      window.history.go(-1)
+    }
   }
+
+}
 
 </script>
 <style scoped>

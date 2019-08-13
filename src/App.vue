@@ -1,19 +1,22 @@
 <template>
   <div id="app">
     <router-view></router-view>
-    <NavBottom v-if="$store.state.navBottom"/>
+    <NavBottom v-show="navShow"/>
   </div>
 </template>
 
 <script>
 import NavBottom from './components/NavBottom'
+import {mapGetters} from  'vuex'
 export default {
   name: 'App',
   data () {
     return {
     }
   },
-  methods:{},
+  computed:{
+      ...mapGetters(["navShow"])
+  },
   components:{
     NavBottom
   }

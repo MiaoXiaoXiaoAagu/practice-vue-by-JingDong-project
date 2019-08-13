@@ -3,8 +3,11 @@ import Router from 'vue-router'
 import Home from "./../components/home/Home"
 import Category from "./../components/category/Category"
 import Mine from "./../components/mine/Mine"
+import Login from "./../components/mine/Login"
 import Find from "./../components/find/Find"
 import Detail from '../components/detail/Detail'
+import Cart from '../components/cart/Cart'
+
 
 Vue.use(Router);
 
@@ -40,6 +43,18 @@ export  default new Router({
    {
       path: '/detail/:id',
       component: Detail
+   },
+   {
+      path: '/cart',
+      component: Cart
+   },
+   {
+      path: '/mine',
+      component: Mine
+   },
+   {
+      path: '/login',
+      component: Login
    }
   ]
 })

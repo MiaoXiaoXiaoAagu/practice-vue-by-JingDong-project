@@ -31,7 +31,7 @@
 export default {
   data () {
     return {
-     id:1000
+      id: 1000
     }
   }
 }

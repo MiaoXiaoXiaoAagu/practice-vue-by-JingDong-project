@@ -26,39 +26,39 @@
 export default {
   data () {
     return {
-     name:'catgory',
-     rightDatas:[]
+      name: 'catgory',
+      rightDatas: []
     }
   },
-  mounted(){
-    if(this.$route.params.id) {
-      this.getRightData(this.$route.params.id);
+  mounted () {
+    if (this.$route.params.id) {
+      this.getRightData(this.$route.params.id)
     }
   },
-  watch:{   //监听
-    //$router   $route
-    $route(to,from){   //路由监听      to当前的值   from 旧的值
-      console.log(to);
-      if(to.params.id){
-        this.getRightData(to.params.id);
+  watch: { // 监听
+    // $router   $route
+    $route (to, from) { // 路由监听      to当前的值   from 旧的值
+      console.log(to)
+      if (to.params.id) {
+        this.getRightData(to.params.id)
       }
     }
   },
-  methods:{
+  methods: {
     // getRightData(id){
     //   this.$http.post('/category/goods',{category_id:parseInt(id)}).then((res)=>{
     //     console.log(res.data);
-		// 		this.rightDatas = res.data;
-		// 	},(err)=>{
-		// 		console.log(err);
-		// 	})
+    // 		this.rightDatas = res.data;
+    // 	},(err)=>{
+    // 		console.log(err);
+    // 	})
     // }
-    getRightData(id){
-      this.$http.get('/categorygoods',{params:{mId:id}}).then((res)=>{
-        console.log(res.data);
-        this.rightDatas = res.data;
-      },(err)=>{
-        console.log(err);
+    getRightData (id) {
+      this.$http.get('/categorygoods', {params: {mId: id}}).then((res) => {
+        // console.log(res.data)
+        this.rightDatas = res.data
+      }, (err) => {
+        console.log(err)
       })
     }
   }

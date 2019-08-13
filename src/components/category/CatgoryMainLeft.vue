@@ -34,7 +34,7 @@ export default{
 		// 	})
 		// },
     getLeftDatas() {
-      this.$http.get('/category/list').then((res)=>{
+      this.$http.get('/category').then((res)=>{
         this.leftDatas = res.data;
       },(err)=>{
         console.log(err);

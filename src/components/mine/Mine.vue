@@ -1,20 +1,19 @@
 <template>
-  <div>
-    <h1>{{welcome}}</h1>
-  </div>
+	<div class="user_i">
+		<MineHeaderView></MineHeaderView>
+		<MineMainView></MineMainView>
+	</div>
 </template>
-
 <script>
-  export default {
-    name: "Mine",
-    data:function () {
-      return{
-        welcome:"Welcome to Mine"
-      };
-    }
-  }
+	import MineHeaderView from './MineHeader';
+	import MineMainView from './MineMain';
+	export default{
+		components:{ 
+			MineMainView,
+			MineHeaderView
+		}
+	}
 </script>
-
-<style scoped>
-
+<style>
+@import '../../assets/css/mine.css';
 </style>
