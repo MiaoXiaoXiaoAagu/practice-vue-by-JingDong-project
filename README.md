@@ -1,30 +1,9 @@
-# my-app
+责任描述：
+通过vue-cli搭建项目框架
+整个项目模块分类
+各组件路由切换
+具体页面涉及商城首页、站内搜索、动态列表展示、列表详情、商品分类、购物车、下单支付、个人中心等功能
+Vuex实现购物车数据添加删除
+公共组件封装及各模块处理
+技术实现： HTML5、CSS3、JS、es6、axios、Vue.js、Node.js、MySql等技术。
 
-> A Vue.js project
-
-## Build Setup
-
-``` bash
-# install dependencies
-npm install
-
-# serve with hot reload at localhost:8080
-npm run dev
-
-# build for production with minification
-npm run build
-
-# build for production and view the bundle analyzer report
-npm run build --report
-
-# run unit tests
-npm run unit
-
-# run e2e tests
-npm run e2e
-
-# run all tests
-npm test
-```
-
-For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
